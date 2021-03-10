@@ -24,14 +24,17 @@
         (connected giraffepen1 tigerpen1)
         (connected tigerpen1 giraffepen1)
 
-        (vacant tigerpen1)
-        (vacant pandapen1)
-        (vacant giraffepen1)
-        (vacant store1)
-
         (robot-at robot1 pantry1)
+        (no-robot store1)
+        (no-robot tigerpen1)
+        (no-robot pandapen1)
+        (no-robot giraffepen1)
 
         (trolley-at trolley1 pantry1)
+        (no-trolley store1)
+        (no-trolley tigerpen1)
+        (no-trolley pandapen1)
+        (no-trolley giraffepen1)
 
         (animal-at tiger1 tigerpen1)
         (animal-at tiger2 tigerpen1)

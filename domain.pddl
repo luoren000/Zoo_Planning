@@ -26,10 +26,10 @@
     (trolley-holding ?x - trolley ?y - food)
     (trolley-at ?x - trolley ?y - location)
 
-    (eats ?x - animal ?y - food)
+    ;;;;(eats ?x - animal ?y - food)
 
     ;; indicates that a location does not have a trolley
-    (vacant ?x - location)
+    ;;;;(vacant ?x - location)
     (no-trolley ?x - location)
 
     ;; indicated that a location does not have a robot
@@ -132,6 +132,7 @@
         (free ?rob)
         (robot-at ?rob ?loc1)
         (connected ?loc1 ?loc2)
+        (no-robot ?loc2)
         ;; (vacant ?loc2)
     )
 
@@ -139,7 +140,8 @@
       and
         (not(robot-at ?rob ?loc1))
         (robot-at ?rob ?loc2)
-        (not(vacant ?loc2))
+        (not(no-robot ?loc2))
+        (no-robot ?loc1)
         ;; (vacant ?loc1)
     )
   )
@@ -158,19 +160,21 @@
             (pushing-trolley ?rob ?tro)
             (connected ?loc1 ?loc2)
             (robot-at ?rob ?loc1)
-            (vacant ?loc2)
             (trolley-at ?tro ?loc1)
-            (not(trolley-at ?tro ?loc2))
+            (no-robot ?loc2)
+            (no-trolley ?loc2)
     )
 
     :effect (
       and
         (not(robot-at ?rob ?loc1))
         (robot-at ?rob ?loc2)
-        (not(vacant ?loc2))
-        (vacant ?loc1)
+        (not(no-robot ?loc2))
+        (no-robot ?loc1)
         (not(trolley-at ?tro ?loc1))
         (trolley-at ?tro ?loc2)
+        (no-trolley ?loc1)
+        (not(no-trolley ?loc2))
     )
   )
 
@@ -185,6 +189,7 @@
       and
         (robot-at ?rob ?loc)
         (free ?rob)
+        (trolley-at ?tro ?loc)
     )
     :effect (
       and
@@ -201,7 +206,7 @@
         ?f - food
       )
       :precondition (
-        and 
+        and
           (robot-at ?rob ?loc)
           (food-at ?f ?loc)
           (not(trolley-holding ?tro ?f))
@@ -209,10 +214,10 @@
           (pushing-trolley ?rob ?tro)
       )
       :effect (
-        and 
+        and
           (not(food-at ?f ?loc))
           (trolley-holding ?tro ?f)
       )
   )
-  
+
 )

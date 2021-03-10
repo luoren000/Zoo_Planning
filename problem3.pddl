@@ -27,15 +27,19 @@
         (connected bearpen1 tigerpen1)
         (connected tigerpen1 bearpen1)
 
-        (vacant tigerpen1)
-        (vacant pandapen1)
-        (vacant giraffepen1)
-        (vacant bearpen1)
-        ;; (vacant pantry1)
-
         (robot-at robot1 pantry1)
+        (no-robot store1)
+        (no-robot tigerpen1)
+        (no-robot pandapen1)
+        (no-robot giraffepen1)
+        (no-robot bearpen1)
 
         (trolley-at trolley1 store1)
+        (no-trolley pantry1)
+        (no-trolley tigerpen1)
+        (no-trolley pandapen1)
+        (no-trolley giraffepen1)
+        (no-trolley bearpen1)
 
         (animal-at tiger1 tigerpen1)
         (animal-at tiger2 tigerpen1)

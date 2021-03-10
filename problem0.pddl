@@ -14,9 +14,10 @@
   (:init
     (connected tigerpen1 pantry1)
     (connected pantry1 tigerpen1)
-    (vacant tigerpen1)
     (robot-at robot1 pantry1)
+    (no-robot tigerpen1)
     (trolley-at trolley1 pantry1)
+    (no-trolley tigerpen1)
     (animal-at tiger tigerpen1)
     (trolley-holding trolley1 meat1)
     (hungry tiger)
