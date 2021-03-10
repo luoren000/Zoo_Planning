@@ -28,10 +28,14 @@
 
     (eats ?x - animal ?y - food)
 
-    ;; indicates that a location does not have a trolley or a truck
+    ;; indicates that a location does not have a trolley
     (vacant ?x - location)
+    (no-trolley ?x - location)
 
-    ;; indicates that a robot is not pushing a trolley or driving a truck
+    ;; indicated that a location does not have a robot
+    (no-robot ?x - location)
+
+    ;; indicates that a robot is not pushing a trolley
     (free ?x - robot)
   )
 
@@ -128,7 +132,7 @@
         (free ?rob)
         (robot-at ?rob ?loc1)
         (connected ?loc1 ?loc2)
-        (vacant ?loc2)
+        ;; (vacant ?loc2)
     )
 
     :effect (
@@ -136,7 +140,7 @@
         (not(robot-at ?rob ?loc1))
         (robot-at ?rob ?loc2)
         (not(vacant ?loc2))
-        (vacant ?loc1)
+        ;; (vacant ?loc1)
     )
   )
 
