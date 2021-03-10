@@ -198,6 +198,27 @@
     )
   )
 
+  (:action drop-trolley
+    :parameters (
+      ?rob - robot
+      ?tro - trolley
+      ?loc - location
+    )
+
+    :precondition (
+      and
+        (robot-at ?rob ?loc)
+        (not(free ?rob))
+        (pushing-trolley ?rob ?tro)
+        (trolley-at ?tro ?loc)
+    )
+    :effect (
+      and
+        (not(pushing-trolley ?rob ?tro))
+        (free ?rob)
+    )
+  )
+
   (:action pick-up-food
       :parameters (
         ?rob - robot
