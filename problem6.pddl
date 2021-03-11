@@ -1,7 +1,7 @@
 (define (problem zoo4)
     ;; feed the carnivores and the herbivores
     ;; get food from store and pantry if required
-    ;; can't feed animals if a visitor is there
+    ;; avoid visitors
     (:domain gordon-ramzoo)
     (:objects
         tiger1 tiger2 - carnivore
