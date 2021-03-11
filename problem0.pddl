@@ -23,8 +23,8 @@
     (hungry tiger)
     (free robot1)
     
-    (no-person tigerpen1)
-    (no-person pantry1)
+    (no-visitors tigerpen1)
+    (no-visitors pantry1)
   )
   (:goal
     (not(hungry tiger))

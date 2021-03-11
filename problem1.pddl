@@ -31,9 +31,9 @@
         (hungry tiger2)
         (free robot1)
 
-        (no-person tigerpen1)
-        (no-person pantry1)
-        (no-person store1)
+        (no-visitors tigerpen1)
+        (no-visitors pantry1)
+        (no-visitors store1)
     )
     (:goal (
         and

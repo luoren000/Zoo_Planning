@@ -6,7 +6,7 @@
     meat veggies - food
     robot trolley - moveable
     store pantry animallocation room - location
-    visitor - person
+    tour-bus - visitors
   )
 
   (:predicates
@@ -19,11 +19,11 @@
 
     (food-at ?x - food ?y - location)
 
-    ;; indicates a visitor is at a location
-    (person-at ?x - visitor ?y - location)
+    ;; indicates visitors at a location
+    (visitors-at ?x - visitors ?y - location)
 
-    ;; indicates that a location does not have a visitor there
-    (no-person ?x - location)
+    ;; indicates that a location does not have visitors there
+    (no-visitors ?x - location)
 
     (connected ?x - location ?y - location)
 
@@ -51,6 +51,9 @@
     
     ;; indicates that this location is a store or a pantry and a visitor is not allowed to move here
     (visitors-allowed  ?x - location)
+
+    ;; indicates an empty cage
+    (no-animal ?x - animallocation)
   )
 
   (:action feed-carnivore
@@ -71,7 +74,7 @@
         (trolley-holding ?tro ?f)
         (trolley-at ?tro ?aniloc)
         (not(free ?rob))
-        (no-person ?aniloc)
+        (no-visitors ?aniloc)
     )
 
     :effect (
@@ -99,7 +102,7 @@
         (trolley-holding ?tro ?f)
         (trolley-at ?tro ?aniloc)
         (not(free ?rob))
-        (no-person ?aniloc)
+        (no-visitors ?aniloc)
     )
 
     :effect (
@@ -127,7 +130,7 @@
         (trolley-holding ?tro ?f)
         (trolley-at ?tro ?aniloc)
         (not(free ?rob))
-        (no-person ?aniloc)
+        (no-visitors ?aniloc)
     )
 
     :effect (
@@ -256,24 +259,24 @@
           (trolley-holding ?tro ?f)
       )
   )
-  (:action person-moves
+  (:action visitors-move
     :parameters (
-      ?vis - visitor
+      ?vis - visitors
       ?loc1 - location
       ?loc2 - location
     )
     :precondition (
       and
-      (person-at ?vis ?loc1)
+      (visitors-at ?vis ?loc1)
       (connected ?loc1 ?loc2)
-      (no-person ?loc2)
+      (no-visitors ?loc2)
       (visitors-allowed ?loc2)
     )
     :effect (
       and
-      (person-at ?vis ?loc2)
-      (not (no-person ?loc2))
-      (no-person ?loc1)
+      (visitors-at ?vis ?loc2)
+      (not (no-visitors ?loc2))
+      (no-visitors ?loc1)
     )
   )
 
@@ -337,6 +340,7 @@
             (holding-animal ?rob ?an)
             (not(free ?rob))
             (robot-at ?rob ?loc)
+            (no-animal ?loc)
     )
 
     :effect (
@@ -344,6 +348,7 @@
             (not(holding-animal ?rob ?an))
             (free ?rob)
             (animal-at ?an ?loc)
+            (not(no-animal ?loc))
     )
   )
 

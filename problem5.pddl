@@ -71,20 +71,24 @@
     (no-trolley room3)
     (no-trolley room4)
 
-    (no-person room1)
-    (no-person room2)
-    (no-person room3)
-    (no-person room4)
-    (no-person exhibit1)
-    (no-person exhibit2)
-    (no-person exhibit3)
-    (no-person exhibit4)
-    (no-person pantry1)
+    (no-visitors room1)
+    (no-visitors room2)
+    (no-visitors room3)
+    (no-visitors room4)
+    (no-visitors exhibit1)
+    (no-visitors exhibit2)
+    (no-visitors exhibit3)
+    (no-visitors exhibit4)
+    (no-visitors pantry1)
 
     (food-at steak1 pantry1)
     (food-at fish1 pantry1)
     (food-at leaves1 pantry1)
 
+    (no-animal exhibit1)
+    (no-animal exhibit2)
+    (no-animal exhibit3)
+    (no-animal exhibit4)
   )
 
   (:goal (

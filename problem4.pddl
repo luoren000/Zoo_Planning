@@ -14,7 +14,7 @@
         trolley1 - trolley
         meat1 meat2 meat3 - meat
         veggie1 veggie2 veggie3 veggie4 - veggies
-        visitor1 - visitor
+        bus1 - tour-bus
     )
 
     (:init
@@ -71,12 +71,12 @@
 
         (free robot1)
 
-        (person-at visitor1 tigerpen1)
-        (no-person pandapen1) 
-        (no-person giraffepen1) 
-        (no-person bearpen1)
-        (no-person pantry1)
-        (no-person store1)
+        (visitors-at bus1 tigerpen1)
+        (no-visitors pandapen1) 
+        (no-visitors giraffepen1) 
+        (no-visitors bearpen1)
+        (no-visitors pantry1)
+        (no-visitors store1)
 
         (visitors-allowed tigerpen1)
         (visitors-allowed pandapen1)
