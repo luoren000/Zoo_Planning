@@ -8,7 +8,6 @@
     room1 room2 room3 room4 - room
     pantry1 - pantry
     robot1 robot2 - robot
-    robot1 - robot
     trolley1 - trolley
     steak1 fish1 - meat
     leaves1 - veggies

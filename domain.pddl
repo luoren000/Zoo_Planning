@@ -48,12 +48,6 @@
 
     ;; indicates that a robot is holding an animal
     (holding-animal ?x - robot ?y - animal)
-
-    ;; indicates a visitor is at a location
-    (person-at ?x - visitor ?y - location)
-
-    ;; indicates that a location does not have a visitor there
-    (no-person ?x - location)
   )
 
   (:action feed-carnivore
