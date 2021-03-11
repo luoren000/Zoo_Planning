@@ -340,22 +340,5 @@
     )
   )
 
-    (:action person-moves
-    :parameters (
-      ?vis - visitor
-      ?loc1 - location
-      ?loc2 - location
-    )
-    :precondition (
-      and
-      (person-at ?vis ?loc1)
-      (connected ?loc1 ?loc2)
-      (no-person ?loc2)
-    )
-    :effect (
-      and
-      (person-at ?vis ?loc2)
-      (no-person ?loc1)
-    )
-  )
+  
 )
