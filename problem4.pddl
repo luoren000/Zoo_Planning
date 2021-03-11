@@ -1,17 +1,20 @@
-(define (problem zoo2)
+(define (problem zoo4)
     ;; feed the carnivores and the herbivores
     ;; get food from store and pantry if required
+    ;; avoid visitors
     (:domain gordon-ramzoo)
     (:objects
         tiger1 tiger2 - carnivore
         panda1 panda2 giraffe1 - herbivore
-        tigerpen1 pandapen1 giraffepen1 - animallocation
+        bear1 bear2 - omnivore
+        tigerpen1 pandapen1 giraffepen1 bearpen1 - animallocation
         pantry1 - pantry
         store1 - store
         robot1 - robot
         trolley1 - trolley
-        meat1 meat2 - meat
-        veggie1 veggie2 veggie3 - veggies
+        meat1 meat2 meat3 - meat
+        veggie1 veggie2 veggie3 veggie4 - veggies
+        visitor1 - visitor
     )
 
     (:init
@@ -23,42 +26,56 @@
         (connected tigerpen1 pandapen1)
         (connected giraffepen1 tigerpen1)
         (connected tigerpen1 giraffepen1)
+        (connected bearpen1 tigerpen1)
+        (connected tigerpen1 bearpen1)
 
         (robot-at robot1 pantry1)
         (no-robot store1)
         (no-robot tigerpen1)
         (no-robot pandapen1)
         (no-robot giraffepen1)
+        (no-robot bearpen1)
 
         (trolley-at trolley1 pantry1)
-        (no-trolley store1)
+        (no-trolley pantry1)
         (no-trolley tigerpen1)
         (no-trolley pandapen1)
         (no-trolley giraffepen1)
+        (no-trolley bearpen1)
 
         (animal-at tiger1 tigerpen1)
         (animal-at tiger2 tigerpen1)
         (animal-at panda1 pandapen1)
         (animal-at panda2 pandapen1)
         (animal-at giraffe1 giraffepen1)
+        (animal-at bear1 bearpen1)
+        (animal-at bear2 bearpen1)
+
 
         (food-at meat1 pantry1)
-        (food-at meat2 store1)
+        (food-at meat2 pantry1)
+        (food-at meat3 pantry1)
+
         (food-at veggie1 pantry1)
-        (food-at veggie2 store1)
-        (food-at veggie3 store1)
+        (food-at veggie2 pantry1)
+        (food-at veggie3 pantry1)
+        (food-at veggie4 pantry1)
 
         (hungry tiger1)
         (hungry tiger2)
         (hungry panda1)
         (hungry panda2)
         (hungry giraffe1)
+        (hungry bear1)
+        (hungry bear2)
 
         (free robot1)
 
-        (no-person tigerpen1) 
+        (person-at visitor1 tigerpen1)
+        (no-person tigerpen1)
         (no-person pandapen1) 
-        (no-person giraffepen1)
+        (no-person giraffepen1) 
+        (no-person bearpen1)
         (no-person pantry1)
         (no-person store1)
     )
@@ -69,6 +86,8 @@
             (not(hungry panda1))
             (not(hungry panda2))
             (not(hungry giraffe1))
+            (not(hungry bear1))
+            (not(hungry bear2))
         )
     )
 )

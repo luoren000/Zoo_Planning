@@ -22,6 +22,9 @@
     (trolley-holding trolley1 meat1)
     (hungry tiger)
     (free robot1)
+    
+    (no-person tigerpen1)
+    (no-person pantry1)
   )
   (:goal
     (not(hungry tiger))

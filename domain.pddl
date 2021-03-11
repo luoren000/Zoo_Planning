@@ -6,6 +6,7 @@
     meat veggies - food
     robot trolley - moveable
     store pantry animallocation room - location
+    visitor - person
   )
 
   (:predicates
@@ -45,7 +46,14 @@
     ;; indicates that a robot is not pushing a trolley
     (free ?x - robot)
 
+    ;; indicates that a robot is holding an animal
     (holding-animal ?x - robot ?y - animal)
+
+    ;; indicates a visitor is at a location
+    (person-at ?x - visitor ?y - location)
+
+    ;; indicates that a location does not have a visitor there
+    (no-person ?x - location)
   )
 
   (:action feed-carnivore
@@ -248,6 +256,24 @@
           (not(food-at ?f ?loc))
           (trolley-holding ?tro ?f)
       )
+  )
+  (:action person-moves
+    :parameters (
+      ?vis - visitor
+      ?loc1 - location
+      ?loc2 - location
+    )
+    :precondition (
+      and
+      (person-at ?vis ?loc1)
+      (connected ?loc1 ?loc2)
+      (no-person ?loc2)
+    )
+    :effect (
+      and
+      (person-at ?vis ?loc2)
+      (no-person ?loc1)
+    )
   )
 
   (:action grab-animal
