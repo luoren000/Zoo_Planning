@@ -72,12 +72,17 @@
         (free robot1)
 
         (person-at visitor1 tigerpen1)
-        (no-person tigerpen1)
         (no-person pandapen1) 
         (no-person giraffepen1) 
         (no-person bearpen1)
         (no-person pantry1)
         (no-person store1)
+
+        (visitors-allowed tigerpen1)
+        (visitors-allowed pandapen1)
+        (visitors-allowed giraffepen1)
+        (visitors-allowed bearpen1)
+        
     )
     (:goal (
         and

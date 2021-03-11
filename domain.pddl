@@ -48,6 +48,9 @@
 
     ;; indicates that a robot is holding an animal
     (holding-animal ?x - robot ?y - animal)
+    
+    ;; indicates that this location is a store or a pantry and a visitor is not allowed to move here
+    (visitors-allowed  ?x - location)
   )
 
   (:action feed-carnivore
@@ -68,6 +71,7 @@
         (trolley-holding ?tro ?f)
         (trolley-at ?tro ?aniloc)
         (not(free ?rob))
+        (no-person ?aniloc)
     )
 
     :effect (
@@ -95,6 +99,7 @@
         (trolley-holding ?tro ?f)
         (trolley-at ?tro ?aniloc)
         (not(free ?rob))
+        (no-person ?aniloc)
     )
 
     :effect (
@@ -122,6 +127,7 @@
         (trolley-holding ?tro ?f)
         (trolley-at ?tro ?aniloc)
         (not(free ?rob))
+        (no-person ?aniloc)
     )
 
     :effect (
@@ -144,7 +150,6 @@
         (robot-at ?rob ?loc1)
         (connected ?loc1 ?loc2)
         (no-robot ?loc2)
-        (no-person ?loc2)
     )
 
     :effect (
@@ -256,16 +261,19 @@
       ?vis - visitor
       ?loc1 - location
       ?loc2 - location
+      ?st - store
     )
     :precondition (
       and
       (person-at ?vis ?loc1)
       (connected ?loc1 ?loc2)
       (no-person ?loc2)
+      (visitors-allowed ?loc2)
     )
     :effect (
       and
       (person-at ?vis ?loc2)
+      (not (no-person ?loc2))
       (no-person ?loc1)
     )
   )
@@ -340,5 +348,5 @@
     )
   )
 
-  
+
 )
