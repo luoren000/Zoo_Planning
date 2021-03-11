@@ -1,4 +1,4 @@
-(define (problem zoo0)
+(define (problem zoo5)
   (:domain gordon-ramzoo)
   (:objects
     tiger - carnivore
