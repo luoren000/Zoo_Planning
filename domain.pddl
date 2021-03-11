@@ -261,7 +261,6 @@
       ?vis - visitor
       ?loc1 - location
       ?loc2 - location
-      ?st - store
     )
     :precondition (
       and
