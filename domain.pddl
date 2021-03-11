@@ -1,11 +1,11 @@
 (define (domain gordon-ramzoo)
-  (:requirements :typing :negative-preconditions)
+  (:requirements :typing :negative-preconditions :existential-preconditions)
 
   (:types
     carnivore herbivore omnivore - animal
     meat veggies - food
     robot trolley - moveable
-    store pantry animallocation - location
+    store pantry animallocation room - location
   )
 
   (:predicates
@@ -14,8 +14,15 @@
 
     (robot-at ?x - robot ?y - location)
 
-    (animal-at ?x - animal ?y - animallocation)
+    (animal-at ?x - animal ?y - location)
+
     (food-at ?x - food ?y - location)
+
+    ;; indicates a visitor is at a location
+    (person-at ?x - visitor ?y - location)
+
+    ;; indicates that a location does not have a visitor there
+    (no-person ?x - location)
 
     (connected ?x - location ?y - location)
 
@@ -37,6 +44,8 @@
 
     ;; indicates that a robot is not pushing a trolley
     (free ?x - robot)
+
+    (holding-animal ?x - robot ?y - animal)
   )
 
   (:action feed-carnivore
@@ -133,7 +142,7 @@
         (robot-at ?rob ?loc1)
         (connected ?loc1 ?loc2)
         (no-robot ?loc2)
-        ;; (vacant ?loc2)
+        (no-person ?loc2)
     )
 
     :effect (
@@ -241,4 +250,92 @@
       )
   )
 
+  (:action grab-animal
+    :parameters (
+        ?rob - robot
+        ?loc - location
+        ?an - animal
+    )
+
+    :precondition (
+        and
+            (robot-at ?rob ?loc)
+            (animal-at ?an ?loc)
+            (free ?rob)
+    )
+
+    :effect (
+        and
+            (holding-animal ?rob ?an)
+            (not(free ?rob))
+            (not(animal-at ?an ?loc))
+    )
+  )
+
+  (:action move-animal
+    :parameters (
+        ?rob - robot
+        ?loc1 - location
+        ?loc2 - location
+        ?an - animal
+    )
+
+    :precondition (
+        and
+            (holding-animal ?rob ?an)
+            (not(free ?rob))
+            (robot-at ?rob ?loc1)
+            (no-robot ?loc2)
+            (connected ?loc1 ?loc2)
+    )
+
+    :effect (
+        and
+            (not(robot-at ?rob ?loc1))
+            (no-robot ?loc1)
+            (robot-at ?rob ?loc2)
+            (not(no-robot ?loc2))
+    )
+  )
+
+  (:action release-animal
+    :parameters (
+        ?rob - robot
+        ?loc - animallocation
+        ?an - animal
+    )
+
+    :precondition (
+        and
+            (holding-animal ?rob ?an)
+            (not(free ?rob))
+            (robot-at ?rob ?loc)
+    )
+
+    :effect (
+        and
+            (not(holding-animal ?rob ?an))
+            (free ?rob)
+            (animal-at ?an ?loc)
+    )
+  )
+
+    (:action person-moves
+    :parameters (
+      ?vis - visitor
+      ?loc1 - location
+      ?loc2 - location
+    )
+    :precondition (
+      and
+      (person-at ?vis ?loc1)
+      (connected ?loc1 ?loc2)
+      (no-person ?loc2)
+    )
+    :effect (
+      and
+      (person-at ?vis ?loc2)
+      (no-person ?loc1)
+    )
+  )
 )
