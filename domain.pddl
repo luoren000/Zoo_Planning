@@ -43,6 +43,8 @@
     ;; indicated that a location does not have a robot
     (no-robot ?x - location)
 
+    (no-animal ?x - animallocation)
+
     ;; indicates that a robot is not pushing a trolley
     (free ?x - robot)
 
@@ -174,6 +176,7 @@
             (trolley-at ?tro ?loc1)
             (no-robot ?loc2)
             (no-trolley ?loc2)
+
     )
 
     :effect (
@@ -251,24 +254,6 @@
           (trolley-holding ?tro ?f)
       )
   )
-  (:action person-moves
-    :parameters (
-      ?vis - visitor
-      ?loc1 - location
-      ?loc2 - location
-    )
-    :precondition (
-      and
-      (person-at ?vis ?loc1)
-      (connected ?loc1 ?loc2)
-      (no-person ?loc2)
-    )
-    :effect (
-      and
-      (person-at ?vis ?loc2)
-      (no-person ?loc1)
-    )
-  )
 
   (:action grab-animal
     :parameters (
@@ -330,6 +315,7 @@
             (holding-animal ?rob ?an)
             (not(free ?rob))
             (robot-at ?rob ?loc)
+            (no-animal ?loc)
     )
 
     :effect (
@@ -337,6 +323,7 @@
             (not(holding-animal ?rob ?an))
             (free ?rob)
             (animal-at ?an ?loc)
+            (not(no-animal ?loc))
     )
   )
 

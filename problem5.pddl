@@ -85,6 +85,10 @@
     (food-at fish1 pantry1)
     (food-at leaves1 pantry1)
 
+    (no-animal exhibit1)
+    (no-animal exhibit2)
+    (no-animal exhibit3)
+    (no-animal exhibit4)
   )
 
   (:goal (
