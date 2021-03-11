@@ -43,17 +43,16 @@
     ;; indicated that a location does not have a robot
     (no-robot ?x - location)
 
+    (no-animal ?x - animallocation)
+
     ;; indicates that a robot is not pushing a trolley
     (free ?x - robot)
 
     ;; indicates that a robot is holding an animal
     (holding-animal ?x - robot ?y - animal)
-    
+
     ;; indicates that this location is a store or a pantry and a visitor is not allowed to move here
     (visitors-allowed  ?x - location)
-
-    ;; indicates an empty cage
-    (no-animal ?x - animallocation)
   )
 
   (:action feed-carnivore
@@ -182,6 +181,7 @@
             (trolley-at ?tro ?loc1)
             (no-robot ?loc2)
             (no-trolley ?loc2)
+
     )
 
     :effect (
@@ -259,6 +259,7 @@
           (trolley-holding ?tro ?f)
       )
   )
+
   (:action visitors-move
     :parameters (
       ?vis - visitors
