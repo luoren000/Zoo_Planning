@@ -68,6 +68,13 @@
         (hungry bear2)
 
         (free robot1)
+
+        (no-person tigerpen1)
+        (no-person pandapen1) 
+        (no-person giraffepen1) 
+        (no-person bearpen1)
+        (no-person pantry1)
+        (no-person store1)
     )
     (:goal (
         and

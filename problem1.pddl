@@ -30,6 +30,10 @@
         (hungry tiger1)
         (hungry tiger2)
         (free robot1)
+
+        (no-person tigerpen1)
+        (no-person pantry1)
+        (no-person store1)
     )
     (:goal (
         and
