@@ -12,46 +12,37 @@
   (:predicates
     ;; determines whether an animal needs to be fed
     (hungry ?x - animal)
-
+    ;; an instance of robot object is at a location
     (robot-at ?x - robot ?y - location)
-
+    ;; an instance of an animal object is at a location
     (animal-at ?x - animal ?y - location)
-
+    ;; an instance of a food object is at a location
     (food-at ?x - food ?y - location)
-
-    ;; indicates visitors at a location
+    ;; an instance of a visitors object is at a location
     (visitors-at ?x - visitors ?y - location)
-
-    ;; indicates that a location does not have visitors there
+    ;; indicates that a location object does not have visitors there
     (no-visitors ?x - location)
-
+    ;; indicates two objects of type location are connected
     (connected ?x - location ?y - location)
-
-    ;; indicates that a robot is pushing a trolley
+    ;; indicates that a robot object is pushing a trolley object
     (pushing-trolley ?x - robot ?y - trolley)
-
-    ;; indicates that a trolley is holding a food item
+    ;; indicates that a trolley object is holding a food object
     (trolley-holding ?x - trolley ?y - food)
+    ;; indicates that a trolley object is located at a location object
     (trolley-at ?x - trolley ?y - location)
-
-    ;;;;(eats ?x - animal ?y - food)
-
-    ;; indicates that a location does not have a trolley
-    ;;;;(vacant ?x - location)
+    ;; indicates that a location object does not have a trolley object there
     (no-trolley ?x - location)
-
-    ;; indicated that a location does not have a robot
+    ;; indicated that a location object does not have a robot object there
     (no-robot ?x - location)
-
+    ;; indicated that a location object does not have an animal there
     (no-animal ?x - animallocation)
-
-    ;; indicates that a robot is not pushing a trolley
+    ;; indicates that a robot object is not pushing a trolley
     (free ?x - robot)
-
-    ;; indicates that a robot is holding an animal
+    ;; indicates that a robot object is holding an animal object
     (holding-animal ?x - robot ?y - animal)
-
-    ;; indicates that this location is a store or a pantry and a visitor is not allowed to move here
+    ;; indicates that a location object can be visited by a vistor object
+    ;; store, pantry do not allow visitors
+    ;; animallocation room allow visitors
     (visitors-allowed  ?x - location)
   )
 
