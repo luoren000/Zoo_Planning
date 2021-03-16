@@ -40,7 +40,7 @@
     (free ?x - robot)
     ;; indicates that a robot object is holding an animal object
     (holding-animal ?x - robot ?y - animal)
-    ;; indicates that a location object can be visited by a vistor object
+    ;; indicates that a location object can be visited by a visitor object
     ;; store, pantry do not allow visitors
     ;; animallocation room allow visitors
     (visitors-allowed  ?x - location)
