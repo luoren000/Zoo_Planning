@@ -343,6 +343,4 @@
             (not(no-animal ?loc))
     )
   )
-
-
 )
